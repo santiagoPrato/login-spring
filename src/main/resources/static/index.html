@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="/createAccount.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
@@ -23,10 +22,14 @@
         <input id="password" name="password" type="password" class="form-control" maxlength="50"/>
     </div>
     <button type="submit" class="btn btn-primary d-block">Submit</button>
+    <div id="error" class="d-none">
+        <p class="text-danger">Your password/email are wrong</p>
+    </div>
     <a class="fs-6 mt-1 float-end cursor-pointer" onclick="create()">Create account</a>
 </form>
 <p id="message" class="ms-3 text-danger d-none"></p>
 
 <script src="/createAccount.js"></script>
+<script src="/error.js"></script>
 </body>
 </html>
