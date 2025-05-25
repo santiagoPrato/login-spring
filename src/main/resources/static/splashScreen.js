@@ -1,9 +1,6 @@
-const splashScreen = document.getElementById("splash-screen");
-const bodyContent = document.getElementById("main");
-
-bodyContent.className = "d-none";
-
-setTimeout( () =>{
-    splashScreen.classList.remove("d-none");
-    bodyContent.classList.add("d-block");
-},2000);
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.getElementById("splash-screen").classList.add("d-none");
+        document.getElementById("main").classList.remove("d-none");
+    }, 2000);
+});

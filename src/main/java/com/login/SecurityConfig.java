@@ -22,7 +22,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/", "/index.html", "/logged.html",
-                                "/index.css", "/error.js", "/createAccount.js",
+                                "/index.css", "/logged.css",
+                                "/error.js", "/createAccount.js", "/splashScreen.js",
                                 "/formRegister", "/register"
                         ).permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
