@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 
 @Configuration
 @EnableWebSecurity
@@ -22,9 +23,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/", "/index.html", "/logged.html",
                                 "/index.css", "/error.js", "/createAccount.js",
-                                "/**/*.css", "/**/*.js", "/**/*.html",
                                 "/formRegister", "/register"
                         ).permitAll()
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

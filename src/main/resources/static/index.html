@@ -1,5 +1,5 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,28 +8,30 @@
               rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
               crossorigin="anonymous" />
-        <title>Document</title>
+        <title>Login</title>
+        <meta name="csrf-header" content="X-CSRF-TOKEN" />
+        <meta name="csrf-token" content="[[${_csrf.token}]]" />
     </head>
     <body class="d-flex align-items-center justify-content-center flex-column">
-    <h2>Login Account</h2>
-    <form method="post" action="/login" class="form-login shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <div class="mb-2">
-            <label class="form-label" for="email">Email address</label>
-            <input id="email" name="username" type="email" class="form-control" maxlength="50"/>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input id="password" name="password" type="password" class="form-control" maxlength="50"/>
-        </div>
-        <button type="submit" class="btn btn-primary d-block">Submit</button>
-        <div id="error" class="d-none">
-            <p class="text-danger">Your password/email are wrong</p>
-        </div>
-        <a class="fs-6 mt-1 float-end cursor-pointer" onclick="create()">Create account</a>
-    </form>
-    <p id="message" class="ms-3 text-danger d-none"></p>
+        <h2 id="form-title">Login Account</h2>
+        <form id="login-form" method="post" action="/login" class="form-login shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+            <div class="mb-2">
+                <label class="form-label" for="email">Email address</label>
+                <input id="email" name="username" type="email" class="form-control" maxlength="50"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input id="password" name="password" type="password" class="form-control" maxlength="50"/>
+            </div>
+            <button type="submit" class="btn btn-primary d-block">Submit</button>
+            <div id="error" class="d-none">
+                <p class="text-danger">Your password/email are wrong</p>
+            </div>
+            <a href="#" id="create-link" class="fs-6 mt-1 float-end cursor-pointer text-decoration-none text-dark"  >Create account</a>
+        </form>
+        <p id="message" class="ms-3 text-danger d-none"></p>
 
-    <script src="/createAccount.js"></script>
-    <script src="/error.js"></script>
+        <script src="/createAccount.js"></script>
+        <script src="/error.js"></script>
     </body>
-    </html>
+</html>

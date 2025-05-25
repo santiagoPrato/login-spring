@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -26,10 +26,10 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(
-            @RequestAttribute String username,
-            @RequestAttribute String password,
-            @RequestAttribute String email,
-            @RequestAttribute Integer age) {
+            @RequestParam String username,
+            @RequestParam String password,
+            @RequestParam String email,
+            @RequestParam Integer age) {
         User user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
@@ -37,12 +37,13 @@ public class RegisterController {
                 .age(age)
                 .build();
 
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        userRepository.save(user);
+
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password);
 
         Authentication authentication = authenticationManager.authenticate(authToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        userRepository.save(user);
         return "redirect:/index.html?registered=true";
     }
 }
