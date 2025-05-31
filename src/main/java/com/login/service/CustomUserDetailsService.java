@@ -1,6 +1,7 @@
-package com.login;
+package com.login.service;
 
 
+import com.login.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,6 +1,7 @@
-package com.login;
+package com.login.controller;
 
 import com.login.user.User;
+import com.login.user.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

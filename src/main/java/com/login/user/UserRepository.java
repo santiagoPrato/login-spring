@@ -1,6 +1,5 @@
-package com.login;
+package com.login.user;
 
-import com.login.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
