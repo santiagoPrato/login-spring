@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
     @NotNull
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
     @NotNull
     @Column(nullable = false)
@@ -40,6 +40,11 @@ public class User implements UserDetails {
     @Column(nullable = false)
     @Builder.Default
     private Role role = Role.USER;
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -63,6 +68,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }
