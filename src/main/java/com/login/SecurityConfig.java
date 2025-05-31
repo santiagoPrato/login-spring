@@ -31,10 +31,14 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/", "/index.html", "/logged.html",
+                                "/", "/index.html",
                                 "/index.css", "/logged.css",
                                 "/error.js", "/createAccount.js", "/profile.js",
                                 "/formRegister", "/register"
+                        ).permitAll()
+                        .requestMatchers(
+                                "/logged.css",
+                                "/profile.js"
                         ).permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()

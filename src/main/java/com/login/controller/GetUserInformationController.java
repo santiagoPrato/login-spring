@@ -7,10 +7,11 @@ import com.login.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
-@org.springframework.web.bind.annotation.RestController
+
+@RestController
 public class GetUserInformationController {
     private final UserRepository userRepository;
 
@@ -31,6 +32,5 @@ public class GetUserInformationController {
                 .orElseThrow(() -> new UsernameNotFoundException(email));
 
         return new PerfilDTO(user.getUsername(), user.getEmail(), user.getAge());
-
     }
 }
